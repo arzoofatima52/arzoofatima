@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Arzoo Fatima — UI/UX Designer & Frontend Developer</title>
+<meta name="description" content="UI/UX Designer and Frontend Developer designing enterprise, government, and banking platforms across the Gulf, UK, US, and Europe."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#16141F;
+    --bg-2:#1E1B2A;
+    --bg-3:#2A2638;
+    --ink:#FFFFFF;
+    --ink-2:#D8DAE0;
+    --muted:#8A8F9C;
+    --rule:#35314A;
+    --rule-2:#45405C;
+    --accent:#B24BFF;
+    --accent-2:#FF9052;
+    --accent-3:#FFE14D;
+    --card:#1E1B2A;
+    --accent-glow:color-mix(in oklab, var(--accent) 45%, transparent);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:'DM Sans',system-ui,sans-serif;font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv11";
+    overflow-x:clip;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:var(--bg)}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .container{max-width:1440px;margin:0 auto;padding:0 80px}
+  @media (min-width:1920px){.container{max-width:1920px;padding:0 120px}}
+  @media (max-width:1080px){.container{max-width:1024px;padding:0 48px}}
+  hr.rule{border:0;border-top:1px solid var(--rule);margin:0}
+
+  /* ---------- Nav ---------- */
+  header.nav{position:sticky;top:0;z-index:50;background:color-mix(in oklab, var(--bg) 86%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 80px;max-width:1440px;margin:0 auto}
+  @media (min-width:1920px){.nav-inner{max-width:1920px;padding:16px 120px}}
+  @media (max-width:1080px){.nav-inner{max-width:1024px;padding:16px 48px}}
+  .logo{display:flex;align-items:center;gap:8px;font-family:'DM Sans',system-ui,sans-serif;font-weight:500;font-size:20px;letter-spacing:-.02em}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);display:inline-block;transform:translateY(-1px);box-shadow:0 0 10px var(--accent-glow),0 0 22px var(--accent-glow)}
+  .nav-links{display:flex;gap:28px;font-size:14px}
+  .nav-links a{opacity:.75;transition:opacity .2s,color .2s}
+  .nav-links a:hover{opacity:1;color:var(--accent)}
+  .nav-cta{font-size:14px;font-weight:500;padding:10px 16px;border:1px solid var(--accent);color:var(--accent);border-radius:999px;transition:all .2s;white-space:nowrap;box-shadow:0 0 0 transparent}
+  .nav-cta:hover{background:var(--accent);color:white;border-color:var(--accent);box-shadow:0 0 6px var(--accent-glow)}
+  .nav-toggle{display:none;background:transparent;border:1px solid var(--rule);border-radius:8px;width:40px;height:40px;align-items:center;justify-content:center;color:var(--ink);cursor:pointer;padding:0}
+  .nav-toggle span{display:block;width:18px;height:2px;background:currentColor;position:relative;transition:transform .2s, background .2s}
+  .nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:currentColor;transition:transform .2s, top .2s}
+  .nav-toggle span::before{top:-6px}
+  .nav-toggle span::after{top:6px}
+  .nav-toggle[aria-expanded="true"] span{background:transparent}
+  .nav-toggle[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+  .mobile-menu{display:none;border-top:1px solid var(--rule);background:var(--bg-2)}
+  .mobile-menu.open{display:block}
+  .mobile-menu a{display:block;padding:16px 24px;border-bottom:1px solid var(--rule);font-size:16px;color:var(--ink-2)}
+  .mobile-menu a:last-child{border-bottom:0}
+  @media (max-width:767.98px){
+    .nav-links{display:none}
+    .nav-cta{display:none}
+    .nav-toggle{display:flex}
+    .nav-inner{padding:14px 24px}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:80px 0 60px}
+  .hero-banner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px 40px;align-items:end}
+  .hero-copy{min-width:0}
+  .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:40px}
+  .eyebrow .line{flex:0 0 40px;height:1px;background:var(--ink)}
+  h1.headline{
+    font-family:'DM Sans',system-ui,sans-serif;
+    font-weight:500;
+    font-size:clamp(40px,5.8vw,88px);
+    line-height:.98;
+    letter-spacing:-.03em;
+    margin:0 0 40px;
+    max-width:14ch;
+  }
+  h1.headline em{font-style:italic;font-weight:400;color:var(--accent);text-shadow:0 0 28px var(--accent-glow)}
+  .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:end;padding-top:24px;border-top:1px solid var(--rule)}
+  .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:20px}
+  .stat .num{font-family:'DM Sans',system-ui,sans-serif;font-size:52px;font-weight:500;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+  .stat .lbl{margin-top:8px;font-size:13px;color:var(--muted)}
+  .hero-lede{font-size:19px;line-height:1.5;color:var(--ink-2);max-width:42ch}
+  .hero-avatar{flex-shrink:0;line-height:0}
+  .hero-avatar img{
+    display:block;
+    height:clamp(420px,58vh,620px);
+    width:auto;
+    max-width:none;
+  }
+  @media (max-width:1080px){
+    .hero-banner{gap:36px 28px}
+    h1.headline{font-size:clamp(36px,5.2vw,64px);max-width:15ch}
+    .hero-avatar img{height:clamp(340px,50vh,480px)}
+    .stat .num{font-size:40px}
+  }
+  @media (max-width:767.98px){
+    .hero-banner{grid-template-columns:1fr;gap:20px;align-items:start}
+    .hero-avatar{order:-1;justify-self:center}
+    .hero-avatar img{height:240px}
+    .hero-grid{grid-template-columns:1fr}
+    .eyebrow{margin-bottom:24px}
+    h1.headline{margin-bottom:28px;max-width:12ch}
+  }
+
+  .marquee{overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:22px 0;background:var(--bg-2)}
+  .marquee-track{display:flex;gap:60px;white-space:nowrap;animation:slide 40s linear infinite;font-family:'DM Sans',system-ui,sans-serif;font-size:24px;font-weight:400;font-style:italic;color:var(--ink-2)}
+  .marquee-track span{display:inline-flex;align-items:center;gap:60px}
+  .marquee-track span::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  section{padding:120px 0;border-top:1px solid var(--rule)}
+  .section-head{display:grid;grid-template-columns:200px 1fr;gap:48px;margin-bottom:64px}
+  .section-head .label{padding-top:8px}
+  .section-head h2{
+    font-family:'DM Sans',system-ui,sans-serif;font-weight:500;
+    font-size:clamp(32px,4.5vw,64px);line-height:1.05;
+    letter-spacing:-.02em;margin:0;max-width:22ch;
+  }
+  .section-head h2 em{font-style:italic;color:var(--accent)}
+  @media (max-width:1080px){.section-head{grid-template-columns:1fr;gap:20px;margin-bottom:48px}}
+
+  .philosophy{padding:140px 0;background:var(--bg-2);color:var(--ink);border:0;border-top:1px solid var(--rule);position:relative;overflow:hidden}
+  .philosophy::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(640px 320px at calc(20% + var(--mx,0px)) calc(30% + var(--my,0px)), color-mix(in oklab, var(--accent) 48%, transparent), transparent),
+    radial-gradient(520px 300px at calc(85% - var(--mx,0px)) calc(70% - var(--my,0px)), color-mix(in oklab, var(--accent-3) 38%, transparent), transparent);
+    transition: background .4s ease-out;
+  }
+  .philosophy .container{position:relative}
+  .philosophy h2{
+    font-family:'DM Sans',system-ui,sans-serif;font-weight:500;
+    font-size:clamp(38px,6vw,88px);line-height:1.02;letter-spacing:-.025em;
+    max-width:18ch;margin:0;
+  }
+  .philosophy h2 em{font-style:italic;color:var(--accent-3)}
+  .philosophy .sub{margin-top:36px;max-width:58ch;color:var(--ink-2);font-size:18px}
+  .philosophy .mono{color:rgb(255, 255, 255)}
+
+  .services{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+  .svc{padding:40px 40px 44px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--bg);transition:background .25s;position:relative}
+  .svc:hover{background:var(--card)}
+  .svc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:16px}
+  .svc .n{font-family:'DM Sans',system-ui,sans-serif;font-size:44px;font-weight:500;color:var(--accent);letter-spacing:-.02em;line-height:1}
+  .svc .icon{width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:var(--bg-2);border:1px solid var(--rule);border-radius:12px;color:var(--accent);transition:transform .3s ease, background .25s}
+  .svc:nth-child(6n+2) .icon{color:var(--accent-2)}
+  .svc:nth-child(6n+3) .icon{color:var(--accent-3)}
+  .svc:nth-child(6n+4) .icon{color:var(--accent)}
+  .svc:nth-child(6n+5) .icon{color:var(--accent-2)}
+  .svc:nth-child(6n+6) .icon{color:var(--accent-3)}
+  .svc:hover .icon{transform:rotate(-4deg) scale(1.05)}
+  .svc h3{font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:30px;letter-spacing:-.02em;margin:14px 0 12px}
+  .svc p{color:var(--ink-2);margin:0 0 22px;max-width:40ch}
+  .svc ul{margin:0;padding:0;list-style:none;columns:2;column-gap:24px;font-size:14px;color:var(--muted)}
+  .svc ul li{padding:6px 0;break-inside:avoid;border-top:1px dashed var(--rule)}
+  .svc ul li:first-child{border-top:0}
+  @media (max-width:767.98px){.services{grid-template-columns:1fr}.svc ul{columns:1}}
+
+  .sector-block{margin-bottom:80px}
+  .sector-intro{display:grid;grid-template-columns:200px 1fr;gap:48px;margin-bottom:32px}
+  .sector-intro h3{font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:28px;letter-spacing:-.015em;margin:0;max-width:30ch}
+  .sector-intro h3 em{font-style:italic;color:var(--accent)}
+  .sector-toggle{display:none}
+  .cases{display:flex;flex-wrap:wrap;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  .case{flex:1 1 calc(33.333% - 2px);min-width:0;background:var(--bg);padding:28px;display:flex;flex-direction:column;min-height:340px;transition:background .25s, transform .25s}
+  .case:hover{background:var(--card)}
+  .case .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .case h4{font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:26px;letter-spacing:-.015em;margin:10px 0 14px}
+  .case p{font-size:14px;color:var(--ink-2);margin:0 0 auto;line-height:1.5}
+  .case .thumb{aspect-ratio:1/1;max-height:600px;margin:-28px -28px 20px;
+    background:
+      linear-gradient(135deg, color-mix(in oklab, var(--hue, var(--accent)) 55%, var(--bg-2)), color-mix(in oklab, var(--hue, var(--accent)) 15%, var(--bg-2)));
+    border-bottom:1px solid var(--rule);
+    display:flex;align-items:flex-end;justify-content:flex-start;
+    padding:16px;
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#0F1320;text-transform:uppercase;letter-spacing:.1em;font-weight:500;
+    position:relative;overflow:hidden;
+  }
+  .case .thumb::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 75% 25%, rgba(255,255,255,.35), transparent 55%),
+      repeating-linear-gradient(45deg, rgba(0,0,0,.05) 0 1px, transparent 1px 14px);
+  }
+  .case .thumb > *{position:relative;z-index:1}
+  .case .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .case .thumb:has(img){background:var(--bg-2)}
+  .case .thumb:has(img)::before{background:linear-gradient(to top, rgba(15,19,32,.55), transparent 55%)}
+  .case .thumb .label{background:rgba(15,19,32,.88);color:#fff;padding:6px 10px;border-radius:999px;z-index:2}
+  .case .svcs{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);font-size:12px;color:var(--muted)}
+  .case .svcs b{color:var(--ink);font-weight:500}
+  .case .stat-chip{display:inline-flex;align-items:center;gap:6px;background:var(--bg-2);padding:5px 10px;border-radius:999px;font-size:12px;color:var(--ink);margin-top:12px;width:fit-content}
+  .case .stat-chip::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  @media (max-width:1080px){.case{flex-basis:calc(50% - 1px)}.sector-intro{grid-template-columns:1fr;gap:16px}}
+  @media (max-width:767.98px){.case{flex-basis:100%}}
+  .case .cs-link{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:14px;font-weight:500;color:var(--accent);transition:gap .2s}
+  .case .cs-link:hover{gap:12px}
+
+  /* Case studies */
+  .cs-list{display:grid;gap:64px}
+  .cs-study{border:1px solid var(--rule);background:var(--bg-2);overflow:hidden}
+  .cs-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:0;border-bottom:1px solid var(--rule)}
+  .cs-hero-copy{padding:40px 40px 44px;display:flex;flex-direction:column;justify-content:center}
+  .cs-hero-copy .tag{margin-bottom:16px}
+  .cs-hero-copy h3{font-family:'DM Sans',system-ui,sans-serif;font-weight:500;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.02em;line-height:1.1;margin:0 0 16px}
+  .cs-hero-copy .lede{color:var(--ink-2);font-size:16px;line-height:1.55;margin:0 0 24px;max-width:46ch}
+  .cs-points{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+  .cs-points li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:color-mix(in oklab, var(--accent) 10%, var(--bg));border:1px solid color-mix(in oklab, var(--accent) 22%, var(--rule));font-size:14px;color:var(--ink-2);line-height:1.45}
+  .cs-points li::before{content:"";flex:0 0 6px;height:6px;margin-top:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-glow)}
+  .cs-hero-media{background:var(--bg);border-left:1px solid var(--rule);min-height:280px}
+  .cs-hero-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .cs-body{padding:36px 40px 44px;display:grid;gap:36px}
+  .cs-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .cs-block h4{font-family:'DM Sans',system-ui,sans-serif;font-weight:500;font-size:20px;letter-spacing:-.015em;margin:0 0 12px}
+  .cs-block p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.55}
+  .cs-block ul{margin:0;padding:0;list-style:none}
+  .cs-block ul li{position:relative;padding:8px 0 8px 18px;border-top:1px dashed var(--rule);color:var(--ink-2);font-size:14px;line-height:1.45}
+  .cs-block ul li:first-child{border-top:0}
+  .cs-block ul li::before{content:"";position:absolute;left:0;top:15px;width:6px;height:6px;border-radius:50%;background:var(--accent-3)}
+  .cs-process{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .cs-step{padding:18px 14px;border:1px solid var(--rule);background:var(--bg);text-align:center}
+  .cs-step .n{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .cs-step .t{font-size:14px;font-weight:500;color:var(--ink)}
+  .cs-palette{display:flex;flex-wrap:wrap;gap:12px}
+  .cs-swatch{flex:1 1 100px;min-width:90px;padding:14px;border:1px solid var(--rule);background:var(--bg)}
+  .cs-swatch .chip{height:36px;border-radius:6px;margin-bottom:10px;border:1px solid var(--rule)}
+  .cs-swatch .name{font-size:13px;color:var(--ink);margin-bottom:2px}
+  .cs-swatch .hex{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.04em}
+  .cs-meta{display:flex;flex-wrap:wrap;gap:10px 18px;padding-top:8px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted)}
+  .cs-meta b{color:var(--ink);font-weight:500}
+  @media (max-width:1080px){
+    .cs-hero{grid-template-columns:1fr}
+    .cs-hero-media{border-left:0;border-top:1px solid var(--rule);min-height:220px}
+    .cs-hero-copy,.cs-body{padding:28px 24px 32px}
+    .cs-grid{grid-template-columns:1fr}
+    .cs-process{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:767.98px){
+    .cs-list{gap:40px}
+    .cs-process{grid-template-columns:repeat(2,1fr)}
+  }
+
+  /* Experience */
+  .exp-grid{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  .exp-card{background:var(--bg);padding:40px;transition:background .25s}
+  .exp-card:hover{background:var(--card)}
+  .exp-top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:20px}
+  .exp-card h3{font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:28px;letter-spacing:-.015em;margin:0 0 6px}
+  .exp-card .role{color:var(--accent);font-size:15px;margin-bottom:4px}
+  .exp-card .when{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .exp-card ul{margin:0;padding:0;list-style:none}
+  .exp-card li{padding:10px 0;border-top:1px dashed var(--rule);color:var(--ink-2);font-size:15px;padding-left:18px;position:relative}
+  .exp-card li::before{content:"";position:absolute;left:0;top:18px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+  .edu-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;margin-top:40px}
+  .edu-card,.cert-card{padding:28px;border:1px solid var(--rule);background:var(--bg-2)}
+  .edu-card h4,.cert-card h4{font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:22px;margin:8px 0 6px;letter-spacing:-.015em}
+  .cert-card ul{margin:12px 0 0;padding:0;list-style:none}
+  .cert-card li{padding:8px 0;border-top:1px dashed var(--rule);color:var(--ink-2);font-size:14px}
+  .cert-card li:first-child{border-top:0}
+  @media (max-width:767.98px){.edu-grid{grid-template-columns:1fr}}
+
+  .contact{padding:140px 0 80px;border-top:1px solid var(--rule)}
+  .contact-inner{display:grid;grid-template-columns:1.3fr .7fr;gap:64px;align-items:start}
+  .contact h2{font-family:'DM Sans',system-ui,sans-serif;font-weight:500;font-size:clamp(42px,6vw,88px);line-height:1;letter-spacing:-.03em;margin:0 0 24px;max-width:14ch}
+  .contact h2 em{font-style:italic;color:var(--accent)}
+  .contact .lede{font-size:18px;color:var(--ink-2);max-width:46ch}
+  .contact-cta{margin-top:40px;display:inline-flex;align-items:center;gap:14px;padding:18px 28px;background:var(--accent);color:#ffffff;border-radius:999px;font-size:16px;font-weight:500;transition:all .2s;    box-shadow: 0 0 5px var(--accent-glow);}
+  .contact-cta:hover{background:var(--ink);color:var(--bg);box-shadow:0 0 18px color-mix(in oklab, var(--ink) 25%, transparent)}
+  .contact-cta .arrow{display:inline-block;transition:transform .2s}
+  .contact-cta:hover .arrow{transform:translateX(4px)}
+  .contact-meta{display:grid;gap:28px;padding-top:8px}
+  .contact-meta .row{padding-top:20px;border-top:1px solid var(--rule)}
+  .contact-meta .mono{margin-bottom:8px}
+  .contact-meta .val{font-family:'DM Sans',system-ui,sans-serif;font-size:22px;font-weight:400;letter-spacing:-.01em;color:var(--ink)}
+  .contact-meta a.val:hover{color:var(--accent)}
+  @media (max-width:767.98px){.contact-inner{grid-template-columns:1fr;gap:40px}}
+
+  footer{padding:48px 0 40px;border-top:1px solid var(--rule);background:var(--bg-2)}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+  .foot .links{display:flex;gap:24px}
+
+  .reveal{opacity:1;transform:none;transition:opacity .6s ease, transform .6s ease}
+  .reveal.pending{opacity:0;transform:translateY(20px)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:1080px){
+    section{padding:88px 0}
+    .hero{padding:64px 0 48px}
+    .philosophy{padding:96px 0}
+    .contact{padding:96px 0 64px}
+    .svc{padding:32px 32px 36px}
+    .case{padding:24px}
+    .case .thumb{max-height:440px;margin:-24px -24px 20px}
+    .sector-block{margin-bottom:64px}
+    .exp-card{padding:32px}
+  }
+
+  @media (min-width:768px) and (max-width:1080px){
+    .case:last-child:nth-child(odd){
+      display:grid;
+      grid-template-columns:42% 1fr;
+      column-gap:28px;
+      align-content:center;
+    }
+    .case:last-child:nth-child(odd) > *{grid-column:2}
+    .case:last-child:nth-child(odd) .thumb{
+      grid-column:1; grid-row:1 / span 20;
+      margin:-24px 0 -24px -24px;
+      aspect-ratio:auto; max-height:none; height:auto; min-height:100%;
+      border-bottom:0; border-right:1px solid var(--rule);
+    }
+    .case:last-child:nth-child(odd) p{margin:0 0 16px}
+    .case:last-child:nth-child(odd) .svcs{margin-top:0}
+  }
+
+  @media (max-width:767.98px){
+    .container{padding:0 24px}
+    section{padding:72px 0}
+    .hero{padding:48px 0 40px}
+    .eyebrow{margin-bottom:28px}
+    .eyebrow .line{flex:0 0 24px}
+    h1.headline{margin:0 0 28px;line-height:1.02;max-width:none}
+    .hero-grid{gap:32px;padding-top:20px}
+    .hero-meta{grid-template-columns:repeat(3,1fr);gap:12px;padding-top:8px}
+    .stat .num{font-size:32px}
+    .stat .lbl{font-size:11px;margin-top:4px}
+    .hero-lede{font-size:16px;max-width:none}
+    .marquee{padding:16px 0}
+    .marquee-track{gap:36px;font-size:18px}
+    .marquee-track span{gap:36px}
+    .philosophy{padding:80px 0}
+    .philosophy .sub{margin-top:24px;font-size:16px}
+    .section-head{margin-bottom:40px;gap:16px}
+    .section-head .label{padding-top:0}
+    .svc{padding:28px 24px 32px}
+    .svc .n{font-size:36px}
+    .svc .icon{width:48px;height:48px;border-radius:10px}
+    .svc .icon svg{width:24px;height:24px}
+    .svc h3{font-size:24px;margin:12px 0 10px}
+    .svc p{font-size:15px;margin-bottom:18px}
+    .sector-block{margin-bottom:0;border-top:1px solid var(--rule)}
+    .sector-intro{margin-bottom:0;gap:8px;cursor:pointer;position:relative;padding:24px 44px 24px 0;-webkit-tap-highlight-color:transparent}
+    .sector-block:not(.collapsed) .sector-intro{padding-bottom:16px}
+    .sector-block.collapsed .cases{display:none}
+    .sector-block .cases{margin-bottom:28px}
+    .sector-intro h3{font-size:22px}
+    .sector-toggle{display:flex;align-items:center;justify-content:center;position:absolute;top:22px;right:0;width:28px;height:28px;color:var(--muted);transition:transform .28s ease}
+    .sector-block.collapsed .sector-toggle{transform:rotate(-90deg)}
+    /* .sector-intro .count{color:var(--muted);font-size:12px} */
+    .case{padding:22px;min-height:0}
+    .case .thumb{aspect-ratio:1/1;margin:-22px -22px 18px;padding:14px;font-size:10px}
+    .case h4{font-size:22px;margin:8px 0 10px}
+    .case p{font-size:14px}
+    .case .svcs{margin-top:16px;padding-top:14px;font-size:11.5px}
+    .exp-card{padding:28px 24px}
+    .exp-card h3{font-size:24px}
+    .contact{padding:80px 0 56px}
+    .contact-inner{gap:32px}
+    .contact .lede{font-size:16px}
+    .contact-cta{margin-top:28px;padding:14px 22px;font-size:15px}
+    .contact-meta{gap:20px}
+    .contact-meta .row{padding-top:16px}
+    .contact-meta .val{font-size:18px}
+    footer{padding:32px 0}
+    .foot{flex-direction:column;align-items:flex-start;gap:16px}
+    .foot .links{flex-wrap:wrap;gap:16px}
+  }
+  @media (max-width:380px){
+    .container{padding:0 16px}
+    .nav-inner{padding:14px 16px}
+    .hero-meta{grid-template-columns:repeat(3,1fr);gap:8px}
+    .stat .num{font-size:24px}
+    .stat .lbl{font-size:10px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo"><span class="dot"></span> Arzoo Fatima</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a href="mailto:arzoofatima025@gmail.com" class="nav-cta">Get in touch →</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#work">Work</a>
+
+    <a href="#experience">Experience</a>
+    <a href="mailto:arzoofatima025@gmail.com" style="color:var(--accent)">Get in touch →</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" style="border-top:0;padding-top:80px">
+  <div class="container hero-banner">
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="line"></span><span class="mono">Karachi · UI/UX Designer &amp; Frontend Developer</span></div>
+      <h1 class="headline">Designing clear products for <em>enterprise, government &amp; banking.</em></h1>
+      <div class="hero-grid">
+        <p class="hero-lede">I take platforms from research and journey mapping through high-fidelity UI, developer handoff, and React front-end for clients across the Gulf, UK, US, and Europe.</p>
+        <div class="hero-meta">
+          <div class="stat"><div class="num">25<span style="color:var(--accent)">%</span></div><div class="lbl">Engagement lift</div></div>
+          <div class="stat"><div class="num">35<span style="color:var(--accent)">%</span></div><div class="lbl">Ops efficiency gain</div></div>
+          <div class="stat"><div class="num">10<span style="color:var(--accent)">+</span></div><div class="lbl">Business models</div></div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Enterprise UX</span><span>Government</span><span>Banking</span><span>Healthcare</span><span>SaaS</span><span>Fintech</span><span>Education</span><span>Power Platform</span><span>React</span>
+    <span>Enterprise UX</span><span>Government</span><span>Banking</span><span>Healthcare</span><span>SaaS</span><span>Fintech</span><span>Education</span><span>Power Platform</span><span>React</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="philosophy" id="about" style="border-top:0">
+  <div class="container">
+    <div class="eyebrow"><span class="line" style="background:var(--ink)"></span><span class="mono">About</span></div>
+    <h2>I place <em>clarity</em> at the heart of every delivery.</h2>
+    <p class="sub">From first client call to developer handoff, I own the full arc research, flows, wireframes, UI systems, and now React screens. I use AI tools daily for prototyping and component generation, and I make the final call on what ships.</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-head">
+      <div class="label"><span class="mono" style="letter-spacing: 2px; color: rgb(255, 255, 255)">Core Skills</span></div>
+      <h2>Design to build — at the intersection of <em>UX, systems &amp; code.</em></h2>
+    </div>
+
+    <div class="services">
+      <div class="svc">
+        <div class="svc-head"><div class="n">01</div><div class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 9h18M8 20h8"/></svg></div></div>
+        <h3>UI / UX Design</h3>
+        <p>End-to-end product design for enterprise, government, and banking platforms mobile-first and constrained by real technical limits.</p>
+        <ul>
+          <li>Wireframing &amp; Prototyping</li><li>User Flows</li>
+          <li>Journey Mapping</li><li>High-Fidelity UI</li>
+          <li>Developer Handoff</li><li>Usability Patterns</li>
+        </ul>
+      </div>
+      <div class="svc">
+        <div class="svc-head"><div class="n">02</div><div class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M7 10v5c0 1.5 2.3 3 5 3s5-1.5 5-3v-5"/><path d="M21 7v6"/></svg></div></div>
+        <h3>Design Systems</h3>
+        <p>Reusable component libraries and visual standards that keep multi-product deliveries consistent and fast to extend.</p>
+        <ul>
+          <li>Component Libraries</li><li>Figma Systems</li>
+          <li>Brand Assets</li><li>UI Specs</li>
+          <li>Multi-Channel Consistency</li>
+        </ul>
+      </div>
+      <div class="svc">
+        <div class="svc-head"><div class="n">03</div><div class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v4H8zM6 10h12v10H6z"/><path d="M10 14h4"/></svg></div></div>
+        <h3>Frontend Development</h3>
+        <p>Turning designs into working React screens closing the gap between design intent and production UI.</p>
+        <ul>
+          <li>React.js</li><li>Component UI</li>
+          <li>Responsive Layouts</li><li>Design-to-Code</li>
+        </ul>
+      </div>
+      <div class="svc">
+        <div class="svc-head"><div class="n">04</div><div class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/></svg></div></div>
+        <h3>Power Platform UX</h3>
+        <p>Clear, usable experiences inside Power Apps, Power Pages, and SharePoint without fighting the platform constraints.</p>
+        <ul>
+          <li>Power Apps</li><li>Power Pages</li>
+          <li>SharePoint Intranet</li><li>Enterprise Forms</li>
+        </ul>
+      </div>
+      <div class="svc">
+        <div class="svc-head"><div class="n">05</div><div class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.2"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></div></div>
+        <h3>AI-Assisted Design</h3>
+        <p>Structured prompting for prototyping, component generation, and content drafting with human judgment on what ships.</p>
+        <ul>
+          <li>Prompt-Driven UI</li><li>Rapid Prototyping</li>
+          <li>Component Generation</li><li>Content Drafting</li>
+        </ul>
+      </div>
+      <div class="svc">
+        <div class="svc-head"><div class="n">06</div><div class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.2"/><path d="M22 21v-2a3.5 3.5 0 0 0-2.5-3.3"/><path d="M16.5 3.7a3.2 3.2 0 0 1 0 6.2"/></svg></div></div>
+        <h3>Client &amp; Delivery</h3>
+        <p>Owning relationships from first call to delivery, spotting upsells, and coordinating developers so projects ship smoothly.</p>
+        <ul>
+          <li>Stakeholder Management</li><li>Feature Strategy</li>
+          <li>Product Upsells</li><li>Cross-Functional Leadership</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="container">
+    <div class="section-head">
+      <div class="label"><span class="mono">Selected Work</span></div>
+      <h2>Platforms and products designed for <em>real constraints.</em></h2>
+    </div>
+
+    <!-- Government & Healthcare -->
+    <div class="sector-block">
+      <div class="sector-intro">
+        <div><span class="mono">01 · Government &amp; Healthcare</span></div>
+        <h3>Bilingual government systems and medical platforms where <em>clarity and trust</em> matter most.</h3>
+      </div>
+      <div class="cases">
+        <article class="case" style="--hue:#B24BFF">
+          <div class="thumb"><img src="assets/work/gcdc.jpg" alt="GCDC" loading="lazy"><span class="label">GCDC — KSA</span></div>
+          <div class="tag">Government · KalSoft</div>
+          <h4>GCDC Intranet</h4>
+          <p>End-to-end delivery for the Gulf Center for Disease Control — architecture, screen design, and developer handoff for a bilingual SharePoint intranet and Power Pages site for a KSA government client.</p>
+          <div class="svcs"><b>Scope:</b> Architecture · UI Design · Handoff · SharePoint · Power Pages</div>
+        </article>
+
+        <article class="case" style="--hue:#4A9FD8">
+          <div class="thumb" ><img src="assets/work/edcura-ui.jpg" alt="EDCURA Medical App" loading="lazy"><span class="label">EDCURA</span></div>
+          <div class="tag">Healthtech · Medical Education</div>
+          <h4>EDCURA — Medical Education App</h4>
+          <p>Mobile app for doctors and students live and recorded sessions, messaging, scheduling, and a social feed for knowledge sharing.</p>
+          <div class="svcs"><b>Scope:</b> Mobile UX · UI Design · Design System · Prototyping</div>
+          <a class="cs-link" href="https://www.behance.net/gallery/236914835/Medical-Education-Platform            ">View case study →</a>
+        </article>
+      </div>
+    </div>
+
+    <!-- Banking -->
+    <div class="sector-block">
+      <div class="sector-intro">
+        <div><span class="mono">02 · Banking</span></div>
+        <h3>Live banking experiences designed to stay clear inside <em>Power Apps &amp; Power Pages</em> limits.</h3>
+      </div>
+      <div class="cases">
+        <article class="case" style="--hue:#FFE14D">
+          <div class="thumb"><img src="assets/work/bank-of-dhofar.jpg" alt="Bank of Dhofar" loading="lazy"><span class="label">Bank of Dhofar</span></div>
+          <div class="tag">Banking · KalSoft</div>
+          <h4>Bank of Dhofar</h4>
+          <p>UI design for a live banking platform prioritising clarity and ease of use within strict Power Apps and Power Pages constraints.</p>
+          <div class="svcs"><b>Scope:</b> Banking UI · Power Apps · Power Pages</div>
+        </article>
+
+        <article class="case" style="--hue:#B24BFF">
+          <div class="thumb"><img src="assets/work/oman-bank.jpg" alt="Oman Bank Development" loading="lazy"><span class="label">Oman Bank Development</span></div>
+          <div class="tag">Banking · KalSoft</div>
+          <h4>Oman Bank Development</h4>
+          <p>Designed UI for a second live banking platform, translating complex banking requirements into approachable, developer-ready screens.</p>
+          <div class="svcs"><b>Scope:</b> Banking UI · Enterprise UX · Handoff</div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Enterprise & SaaS -->
+    <div class="sector-block">
+      <div class="sector-intro">
+        <div><span class="mono">03 · Enterprise &amp; SaaS</span></div>
+        <h3>Internal tools and multi-tenant products that replace <em>manual chaos</em> with structured systems.</h3>
+      </div>
+      <div class="cases">
+        <article class="case" style="--hue:#4A6D6C">
+          <div class="thumb"><img src="assets/work/fruit-app.jpg" alt=" Application" loading="lazy"><span class="label">Import Application</span></div>
+          <div class="tag">Enterprise · Import</div>
+          <h4>Import Management Application</h4>
+          <p>UX/UI for a import management system track supplier orders, monitor shipments, and generate performance reports in one place.</p>
+          <div class="svcs"><b>Scope:</b> UX Research · UI Design · Design System · Handoff</div>
+          <a class="cs-link" href="https://www.behance.net/gallery/243998961/Import-Management-System">View case study →</a>
+        </article>
+        <article class="case" style="--hue:#FF9052">
+          <div class="thumb"><img src="assets/work/sportswear-ops.jpg" alt="Production Pipeline" loading="lazy"><span class="label">Production Pipeline</span></div>
+          <div class="tag">Operations · Jetnetix</div>
+          <h4>Sportswear Ops System</h4>
+          <p>Internal operations system tracking a sportswear company’s full production pipeline from design through delivery replacing fragmented tracking.</p>
+          <span class="stat-chip">+35% operational efficiency</span>
+          <div class="svcs"><b>Scope:</b> Enterprise UX · Workflow Design · UI</div>
+        </article>
+
+        <article class="case" style="--hue:#FFE14D">
+          <div class="thumb"><img src="assets/work/saas-quotes.jpg" alt="SaaS Quotes" loading="lazy"><span class="label">SaaS Quotes</span></div>
+          <div class="tag">SaaS · Jetnetix</div>
+          <h4>Multi-Tenant Quote Platform</h4>
+          <p>SaaS quote-generation platform with embedded payment processing, letting one admin manage multiple agencies from a single control surface.</p>
+          <div class="svcs"><b>Scope:</b> SaaS UX · Multi-Tenant UI · Payments Flow</div>
+        </article>
+
+        <article class="case" style="--hue:#FF9052">
+          <div class="thumb"><img src="assets/work/timesheet.jpg" alt="Digital Timesheet" loading="lazy"><span class="label">Digital Timesheet</span></div>
+          <div class="tag">Internal Tool · KalSoft</div>
+          <h4>Role-Based Timesheet</h4>
+          <p>Replaced a fully manual timesheet process with a role-based digital tool built from scratch cutting administrative work for employees.</p>
+          <div class="svcs"><b>Scope:</b> Product Design · Role-Based UX · Ops Tooling</div>
+        </article>
+
+        <article class="case" style="--hue:#FFE14D">
+          <div class="thumb"><img src="assets/work/software-compare.jpg" alt="Software Compare" loading="lazy"><span class="label">Software Compare + CRM</span></div>
+          <div class="tag">SaaS · Jetnetix</div>
+          <h4>Software Compare + CRM</h4>
+          <p>Consistent experience across a public software comparison site and its internal CRM keeping discovery and management layers aligned.</p>
+          <div class="svcs"><b>Scope:</b> Public UX · CRM UI · System Consistency</div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Product & Consumer -->
+    <div class="sector-block">
+      <div class="sector-intro">
+        <div><span class="mono">04 · Product &amp; Consumer</span></div>
+        <h3>Mobile apps and commerce flows designed for <em>everyday use.</em></h3>
+      </div>
+      <div class="cases">
+        <article class="case" style="--hue:#B24BFF">
+          <div class="thumb"><img src="assets/work/rewards-app.jpg" alt="Rewards App" loading="lazy"><span class="label">Rewards App</span></div>
+          <div class="tag">Consumer · Jetnetix</div>
+          <h4>Gamified Rewards App</h4>
+          <p>Location-based offer discovery that turns loyalty points into real discounts and event access designed for fast, habitual use.</p>
+          <div class="svcs"><b>Scope:</b> Mobile UX · Gamification · Offer Discovery</div>
+        </article>
+
+        <article class="case" style="--hue:#FF9052">
+          <div class="thumb"><img src="assets/work/pos.jpg" alt="F&amp;B POS" loading="lazy"><span class="label">F&amp;B POS</span></div>
+          <div class="tag">Retail · Jetnetix</div>
+          <h4>F&amp;B Point of Sale</h4>
+          <p>Full POS system covering product selection, custom pricing, layered discounts, and payment flow prototyped end-to-end for developer handoff.</p>
+          <div class="svcs"><b>Scope:</b> POS UX · Pricing Flows · Prototyping</div>
+        </article>
+
+        <article class="case" style="--hue:#FFE14D">
+          <div class="thumb"><img src="assets/work/auto-market.jpg" alt="Auto Marketplace" loading="lazy"><span class="label">Auto Marketplace</span></div>
+          <div class="tag">Mobile · Automorphix</div>
+          <h4>Automobile Marketplace</h4>
+          <p>Mobile marketplace app with car listings, product details, and service tools clear layouts and interaction patterns that improved core usability.</p>
+          <div class="svcs"><b>Scope:</b> Mobile UI · User Flows · Feature Definition</div>
+        </article>
+      </div>
+    </div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-head">
+      <div class="label"><span class="mono">Experience</span></div>
+      <h2>Roles where I owned delivery from <em>first call to ship.</em></h2>
+    </div>
+
+    <div class="exp-grid">
+      <article class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="role">UI/UX Designer &amp; Frontend Developer</div>
+            <h3>KalSoft</h3>
+          </div>
+          <div class="when">Jan 2026 – Present · Karachi</div>
+        </div>
+        <ul>
+          <li>Delivered GCDC for a KSA government client bilingual SharePoint intranet and Power Pages.</li>
+          <li>Designed UI for Bank of Dhofar and Oman Bank Development within Power Platform limits.</li>
+          <li>Led AI-assisted website revamp and built corporate portfolio, profile, and BD assets.</li>
+          <li>Started shipping React front-end from design, and replaced manual timesheets with a digital tool.</li>
+        </ul>
+      </article>
+
+      <article class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="role">UI/UX Designer (R &amp; D Manager)</div>
+            <h3>Jetnetix Solutions</h3>
+          </div>
+          <div class="when">Dec 2023 – Dec 2025 · Onsite</div>
+        </div>
+        <ul>
+          <li>Led design across 10+ business models for clients in the US, UK, Gulf, France, Netherlands, and Poland.</li>
+          <li>Designed EDCURA medical education app and import business tracked application.</li>
+          <li>Owned client relationships end-to-end and identified upsells that expanded project scope.</li>
+          <li>Designed a multi-tenant SaaS platform where one admin manages multiple agencies, each creating quotes and taking payments.</li>
+          
+        </ul>
+      </article>
+
+      <article class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="role">UI/UX Consultant (Contract)</div>
+            <h3>Automorphix</h3>
+          </div>
+          <div class="when">Jul 2023 – Nov 2023 · Remote</div>
+        </div>
+        <ul>
+          <li>Designed a mobile automobile marketplace — listings, details, and service tools with clearer interaction patterns.</li>
+          <li>Defined feature behaviour with stakeholders so design decisions matched business goals.</li>
+        </ul>
+      </article>
+
+      <article class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="role">Freelance UI/UX Designer</div>
+            <h3>Independent Projects</h3>
+          </div>
+          <div class="when">2022 – 2023 · Remote</div>
+        </div>
+        <ul>
+          <li>Delivered end-to-end UX/UI for freelance clients across industries, building mobile interface and independent delivery experience.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="mono">Education</div>
+        <h4>Bachelor of Software Engineering</h4>
+        <div class="role" style="color:var(--muted)">Bahria University · 2019 – 2023</div>
+      </div>
+      <div class="cert-card">
+        <div class="mono">Certifications</div>
+        <h4>UX · AI · Design Thinking</h4>
+        <ul>
+          <li> <a href="https://www.coursera.org/account/accomplishments/verify/WEULIYLHGBTB">Generative AI: The Future of UX/UI Design — Coursera</a></li>
+          <li><a href="https://www.coursera.org/account/accomplishments/verify/OCXSV0CLUMWE">IBM Generative AI: Prompt Engineering Basics — Coursera</a></li>
+          <li><a href="https://www.credly.com/badges/9fa6cfb6-daa8-470c-b21f-4c1bbbe370a6/public_urlx ">IBM Enterprise Design Thinking Practitioner — IBM Credly</a></li>
+          <li><a href="https://www.coursera.org/account/accomplishments/certificate/U9LVVEAA9SVK">Foundations of User Experience (UX) Design — Coursera</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <div class="eyebrow"><span class="line"></span><span class="mono">Let’s work together</span></div>
+        <h2>Have a product that needs <em>clear design?</em></h2>
+        <p class="lede">Whether you’re shipping an enterprise platform, a government system, or a consumer product. I’d love to hear about it.</p>
+        <a href="mailto:arzoofatima025@gmail.com" class="contact-cta">Start a conversation <span class="arrow">→</span></a>
+      </div>
+      <aside class="contact-meta">
+        <div class="row">
+          <div class="mono">Email</div>
+          <a class="val" href="mailto:arzoofatima025@gmail.com">arzoofatima025@gmail.com</a>
+        </div>
+        <div class="row">
+          <div class="mono">LinkedIn</div>
+          <a class="val" href="https://linkedin.com/in/arzoo-fatima-/" target="_blank" rel="noopener noreferrer">linkedin.com/in/arzoo-fatima-/</a>
+        </div>
+        <div class="row">
+          <div class="mono">Behance</div>
+          <a class="val" href="https://behance.net/arzoofatima1" target="_blank" rel="noopener noreferrer">behance.net/arzoofatima1</a>
+        </div>
+        <div class="row">
+          <div class="mono">Location</div>
+          <div class="val">Karachi, Pakistan</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <div>© <span id="yr"></span> Arzoo Fatima — UI/UX Designer &amp; Frontend Developer.</div>
+    <div class="links">
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if(navToggle && mobileMenu){
+    navToggle.addEventListener('click', ()=>{
+      const open = mobileMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=>{
+        mobileMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded','false');
+        navToggle.setAttribute('aria-label','Open menu');
+      });
+    });
+  }
+
+  document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const email = a.getAttribute('href').replace(/^mailto:/,'').split('?')[0];
+      const url = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(email)
+        + '&su=' + encodeURIComponent("Let's work together");
+      const win = window.open(url, '_blank', 'noopener,noreferrer');
+      if(win){ e.preventDefault(); }
+    });
+  });
+
+  const navEl = document.querySelector('header.nav');
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if(id.length>1){
+        const el = document.querySelector(id);
+        if(el){
+          e.preventDefault();
+          const offset = (navEl ? navEl.offsetHeight : 0) + 16;
+          const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({top, behavior:'smooth'});
+        }
+      }
+    });
+  });
+
+  const philo = document.querySelector('.philosophy');
+  if(philo && window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    window.addEventListener('mousemove', (e)=>{
+      const r = philo.getBoundingClientRect();
+      const cx = r.left + r.width/2, cy = r.top + r.height/2;
+      const dx = (e.clientX - cx) / r.width;
+      const dy = (e.clientY - cy) / r.height;
+      philo.style.setProperty('--mx', (dx * 40).toFixed(1) + 'px');
+      philo.style.setProperty('--my', (dy * 30).toFixed(1) + 'px');
+    });
+  }
+
+  const mq = window.matchMedia('(max-width:767.98px)');
+  const chevron = '<svg class="sector-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+  document.querySelectorAll('.sector-block').forEach((block, i)=>{
+    const intro = block.querySelector('.sector-intro');
+    if(!intro || intro.querySelector('.sector-toggle')) return;
+    intro.insertAdjacentHTML('beforeend', chevron);
+    const n = block.querySelectorAll('.case').length;
+    const label = intro.querySelector('.mono');
+    if(label && !label.querySelector('')) label.insertAdjacentHTML('beforeend', ' <span class="count">· '+n+'</span>');
+    const setExpanded = (open)=> intro.setAttribute('aria-expanded', open ? 'true' : 'false');
+    const apply = ()=>{
+      if(mq.matches){
+        intro.setAttribute('role','button'); intro.setAttribute('tabindex','0');
+        if(!intro.dataset.init){ block.classList.toggle('collapsed', i!==0); intro.dataset.init='1'; }
+        setExpanded(!block.classList.contains('collapsed'));
+      } else {
+        intro.removeAttribute('role'); intro.removeAttribute('tabindex'); intro.removeAttribute('aria-expanded');
+        block.classList.remove('collapsed');
+        intro.dataset.init='';
+      }
+    };
+    apply();
+    const toggle = ()=>{ if(!mq.matches) return; const collapsed = block.classList.toggle('collapsed'); setExpanded(!collapsed);
+      if(!collapsed) block.querySelectorAll('.case.pending').forEach(c=>{c.classList.remove('pending');c.classList.add('in');}); };
+    intro.addEventListener('click', toggle);
+    intro.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+    (mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply));
+  });
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.remove('pending'); en.target.classList.add('in'); io.unobserve(en.target);} });
+  },{threshold:0, rootMargin:'0px 0px -40px 0px'});
+  const vh = window.innerHeight;
+  document.querySelectorAll('.case, .svc, .exp-card, .edu-card, .cert-card').forEach(el=>{
+    el.classList.add('reveal');
+    const top = el.getBoundingClientRect().top;
+    if(top > vh * 0.9){ el.classList.add('pending'); io.observe(el); }
+  });
+</script>
+</body>
+</html>
